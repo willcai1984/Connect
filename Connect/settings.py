@@ -97,7 +97,7 @@ STATIC_URL = '/static/'
 
 #Add Template Folder by will
 TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(__file__), 'templates'),
+    os.path.join(os.path.dirname(__file__), 'Temp'),
 )
 
 
