@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>Aerohive Connect Config Page</title>
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/row_operate.js"></script>
+<link href="../../css/input_format.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<p>Aerohive Capacity Tool 1.0</p>
+<form id="config" action="/connect/process/" method="get">
+	<p align="center">Connect Parameters </p>
+	<table width="950" height="200" border="1" align="center" bordercolor="#000000">
+		<tr>
+			<td width="150">ConnectType</td>
+			<td width="311" bordercolor="#000000"><select name="type">
+				<option value="s">SSH</option>
+				<option value="t">TELNET</option>
+			  </select>
+			</td>
+			<td width="150">Port</td>
+			<td width="311"><input name="port" type="text" class="input_20_300" value="22" /></td>
+		</tr>
+
+		<tr>
+			<td>TargetIP</td>
+			<td bordercolor="#000000"><input name="ip" type="text" class="input_20_300" value="" /></td>
+			<td>Prompt</td>
+			<td bordercolor="#000000"><input name="prompt" type="text" class="input_20_300" value="AH-\w+#" /></td>
+		</tr>	
+		
+		<tr>
+			<td>UserName</td>
+			<td bordercolor="#000000"><input name="user" type="text" class="input_20_300" value="admin" /></td>
+			<td>Password</td>
+			<td bordercolor="#000000"><input name="passwd" type="password" class="input_20_300" value="aerohive" /></td>
+		</tr>
+
+		<tr>
+			<td>TimeOut</td>
+			<td bordercolor="#000000"><input name="timeout" type="text" class="input_20_300" value="5" /></td>
+			<td>LogFile</td>
+			<td bordercolor="#000000"><input id="logfile" name="logfile" type="text" class="input_20_300" value="" /></td>
+		</tr>
+	</table>
+
+	<p align="center">Execute CLIs</p>
+  	<table width="35%" align="center" border="0">
+  		<tr>
+			<td style="text-align:left;"><button id="add" type="button" style="width:100px; text-align:center;">Add</button></td>
+			<td style="text-align:right;"><button id="del" type="button" style="width:100px; text-align:center;">Remove</button></td>
+		</tr>
+	</table>
+	
+  	<table id="cli_table" width="950" height="60" border="1" align="center" bordercolor="#000000">
+		<tr>
+        	<td width="100">ID</td>
+        	<td width="950">CLI</td>
+      	</tr>
+		<tr id="cli_tr_1">
+        	<td width="100">1</td>
+        	<td width="950"><input name="cli_1" type="text" style="height:20px;width:930px" value="" /></td>
+		</tr>
+	</table>
+
+	<p>&nbsp;</p>
+
+  	<table id="submit" width="950" height="60" align="center">
+		<tr>
+			<td style="text-align:center;"><input type="submit" style="height:30px;width:100px" value="Execute"></td>
+      	</tr>
+	</table>
+</form>
+
+</body>
+</html>
