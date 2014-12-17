@@ -35,7 +35,11 @@ def connect_process(request):
     exec_cli_list.append("1>" + stdfile + " 2>&1 &")
     exec_cli = ' '.join(exec_cli_list)
     os.system(exec_cli)
-    render_to_response('html/Connect/process.html', {'stdfile':stdfile, 'logfile':request.GET["logfile"]})
+    t = get_template('html/Connect/process.html')
+    html = t.render(Context({'stdfile':stdfile, 'logfile':request.GET["logfile"]}))
+    #return HttpResponse(html, content_type="application/x-javascript")
+    return HttpResponse(html)
+
 
 def connect_process_longpull(request):
     if request.has_key('logfile'):
