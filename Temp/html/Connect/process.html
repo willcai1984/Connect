@@ -9,7 +9,9 @@
 <link href="../../css/input_format.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 	$(document).ready(function(){
-  		var long_pull=long_pull(log_file);
+		var elem=document.getElementById('logfile');  
+		//alert(elem.innerHTML);
+  		long_pull(elem.innerHTML);
 	});
 </script>
 </head>
@@ -22,13 +24,19 @@
 
 <table border="1" align="center" bordercolor="#000000" style="width:1000px; height:300px;">
 	<tr>
-   		<td><div id="std" style="height:300px; overflow:auto; text-align: left;">&nbsp;</div></td>
+		<td id="stdfile">{{ stdfile }}</td>
+	</tr>
+	<tr>
+   		<td><div id="std" style="height:250px; overflow:auto; text-align: left;">&nbsp;</div></td>
   	</tr>
 </table>
 
 <p align="center">Execute CLI Recorder</p>
 
 <table border="1" align="center" bordercolor="#000000" style="width:1000px; height:400px;">
+	<tr>
+		<td id="logfile">{{ logfile }}</td>
+	</tr>
 	<tr>
    		<td><div id="log" style="height:400px; overflow:auto; text-align: left;">&nbsp;</div></td>
   	</tr>
