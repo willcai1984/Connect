@@ -4,7 +4,8 @@ from django.http import HttpResponse
 import re, os, simplejson
 def connect_config(request):
     t = get_template('html/Connect/config.html')
-    return HttpResponse(t)
+    html = t.render(Context({'': ''}))
+    return HttpResponse(html)
 
 def connect_process(request):
     exec_cli_list = ["nohup python /home/will/git/AerohiveExpect/connect.py --debug info"]
