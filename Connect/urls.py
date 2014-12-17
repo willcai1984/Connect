@@ -12,5 +12,12 @@ urlpatterns = patterns('',
     url(r'^connect/process/$', connect_process),
     url(r'^connect/process/longpull/$', connect_process_longpull),
     url(r'^connect/success/', connect_success),
-    url(r'^connect/fail/', connect_fail)
+    url(r'^connect/fail/', connect_fail),
+    
+    url(r'^js/(?P<path>.*)$', 'django.views.static.serve',
+            {'document_root': '/home/will/git/Connect/Temp'}
+    ),
+    url(r'^css/(?P<path>.*)$', 'django.views.static.serve',
+            {'document_root': '/home/will/git/Connect/Temp'}
+    ),
 )
