@@ -6,7 +6,7 @@ import re, os, simplejson
 def connect_config(request):
     t = get_template('html/Connect/config.html')
     html = t.render(Context({'': ''}))
-    return HttpResponse(html)
+    return HttpResponse(html, mimetype="application/x-javascript")
 
 def connect_process(request):
     exec_cli_list = ["nohup python /home/will/git/AerohiveExpect/connect.py --debug info"]
