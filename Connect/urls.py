@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from Connect.views import connect_config, connect_process, connect_success, connect_fail
+from Connect.views import connect_config, connect_process, connect_process_longpull, connect_success, connect_fail
 
 urlpatterns = patterns('',
     # Examples:
@@ -9,7 +9,8 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^connect/config/', connect_config),
-    url(r'^connect/process/', connect_process),
+    url(r'^connect/process/$', connect_process),
+    url(r'^connect/process/longpull/$', connect_process_longpull),
     url(r'^connect/success/', connect_success),
     url(r'^connect/fail/', connect_fail)
 )
