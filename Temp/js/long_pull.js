@@ -15,7 +15,8 @@ function long_pull(log_file){
 
 	    onSuccess: function(data){
 	    	log=data.log
-	    	std=data.std	
+	    	std=data.std
+	    	console.log("Get data successfully, start replace")
 		    //Write log parter, due to contains html sign, cannot use text 
 		    try{
 				$("#log").html(log);
@@ -35,7 +36,7 @@ function long_pull(log_file){
 				updater.onError();
 				return;
 			}
-			interval = window.setTimeout(updater.poll_post, 500);
+			interval = window.setTimeout(updater.poll_post, 1000);
 		}, 
 		  
 	    onError: function(){
