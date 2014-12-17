@@ -6,7 +6,7 @@ import re, os, simplejson
 def connect_config(request):
     t = get_template('html/Connect/config.html')
     html = t.render(Context({'': ''}))
-    return HttpResponse(html, mimetype="application/x-javascript")
+    return HttpResponse(html, content_type="application/x-javascript")
 
 def connect_process(request):
     exec_cli_list = ["nohup python /home/will/git/AerohiveExpect/connect.py --debug info"]
@@ -47,7 +47,7 @@ def connect_process_longpull(request):
         s_r = s_o.read()
     result = {"log":l_r, "std":s_r}
     result_json = simplejson.dumps(result, ensure_ascii=False)
-    return HttpResponse(result_json, mimetype='application/javascript')
+    return HttpResponse(result_json, content_type='application/x-javascript')
 
 def connect_success(request):
     render_to_response('html/Connect/success.html', {})
