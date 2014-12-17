@@ -2,7 +2,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponse
 import re, os, simplejson
 def connect_config(request):
-    render_to_response('html/Connect/connect.html', {})
+    render_to_response('html/Connect/config.html', {})
 
 def connect_process(request):
     exec_cli_list = ["nohup python /home/will/git/AerohiveExpect/connect.py --debug info"]
