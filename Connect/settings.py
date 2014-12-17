@@ -100,7 +100,7 @@ TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), '../Temp'),
 )
 
-STATICFILES_DIRS = ( 
-    os.path.join(os.path.dirname(__file__),'..'), 
-) 
+#STATICFILES_DIRS = ( 
+#    os.path.join(os.path.dirname(__file__),'..'), 
+#) 
 
