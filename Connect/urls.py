@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*- 
+
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from Connect.views import connect_config, connect_process, connect_process_longpull, connect_success, connect_fail
