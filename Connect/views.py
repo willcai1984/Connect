@@ -42,7 +42,7 @@ def connect_process(request):
 
 
 def connect_process_longpull(request):
-    if request.has_key('logfile'):
+    if request.POST.has_key('logfile'):
         logfile = request.POST['logfile']
     #stdout part
     stdfile = log2std(logfile)
