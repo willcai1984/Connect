@@ -59,6 +59,8 @@ def connect_process_longpull(request):
         #print "Logfile is '%s'" % l_r
         #print "stdfile is '%s'" % s_r
         '''
+        issue1
+        UnicodeDecodeError: 'utf8' codec can't decode byte 0xff in position 380: invalid start byte
         http://blog.csdn.net/dldx_062/article/details/8646970
         '''      
         result = {u"log":unicode(l_r, errors='ignore'), u"std":unicode(s_r, errors='ignore')}
