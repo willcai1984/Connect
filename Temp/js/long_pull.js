@@ -44,7 +44,7 @@ function long_pull(logfile){
 				updater.onError();
 				return;
 			}
-			interval = window.setTimeout(updater.poll_post, 1000);
+			interval = window.setTimeout(updater.poll_post, 5000);
 		}, 
 		  
 	    onError: function (XMLHttpRequest, textStatus, errorThrown){ 
