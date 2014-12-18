@@ -64,7 +64,7 @@ function long_pull(logfile,stdfile){
 	    },
 	    
 	    onComplete: function (){ 
-	        alert(Task done);
+	        alert("Task done");
 	    }	    
 	    
 	}    
