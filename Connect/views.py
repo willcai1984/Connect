@@ -71,7 +71,7 @@ def log2std(logfile):
     if not os.path.exists(log_dir):
         os.makedirs(log_dir) 
     log_file_name, log_file_suffix = os.path.splitext(log_file)
-    stdfile = log_dir + log_file_name + '.std'
+    stdfile = log_dir + '/' + log_file_name + '.std'
     if not os.path.exists(logfile):
         #if null, create the file
         os.system("echo ''>" + logfile)
