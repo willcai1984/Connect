@@ -29,7 +29,8 @@ def connect_process(request):
         exec_cli_list.append("-l '%s'" % request.GET["logfile"])
     for i in range(1, 6):
         if "cli_" + str(i) in request.GET:
-            exec '''exec_cli_list.append("-cr "+request.GET["cli_%s"])''' % i
+            #Add "" for cr command
+            exec '''exec_cli_list.append('-cr "'+request.GET['cli_%s']+'"')''' % i
     #stdout part
     stdfile = log2std(request.GET["logfile"])
     exec_cli_list.append("1>" + stdfile + " 2>&1 &")
