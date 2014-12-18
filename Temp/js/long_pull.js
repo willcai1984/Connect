@@ -15,7 +15,8 @@ function long_pull(logfile,stdfile){
 	            dataType: 'json',	     
 	            cache: false,
 	            success: updater.onSuccess,
-	            error: updater.onError
+	            error: updater.onError,
+	            complete: updater.onComplete
 	            });
 	    },
 
@@ -23,8 +24,11 @@ function long_pull(logfile,stdfile){
 	    	console.log("Get data is: "+data)
 	    	log=data.log
 	    	std=data.std
+	    	is_end=data.is_end
 	    	console.log("Log is: "+log)
 	    	console.log("Std is: "+std)
+	    	console.log("is_end is: "+is_end)
+	    	if (is_end=='false'){
 		    //Write log parter, due to contains html sign, cannot use text 
 		    try{
 				$("#log").html(log);
@@ -44,15 +48,25 @@ function long_pull(logfile,stdfile){
 				updater.onError();
 				return;
 			}
-			interval = window.setTimeout(updater.poll_post, 5000);
-		}, 
+			interval = window.setTimeout(updater.poll_post, 2000);
+		}
+		else{
+		    updater.onComplete();
+		}
+			
+	    }, 
 		  
 	    onError: function (XMLHttpRequest, textStatus, errorThrown){ 
 	        console.log("Poll error;");
 	        console.log("XMLHttpRequest:"+XMLHttpRequest);
 	        console.log("textStatus:"+textStatus);
 	        console.log("errorThrown:"+errorThrown);
-	    }
+	    },
+	    
+	    onComplete: function (){ 
+	        alert(Task done);
+	    }	    
+	    
 	}    
 	updater.poll_post();
 }

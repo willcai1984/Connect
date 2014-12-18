@@ -45,6 +45,7 @@ def connect_process(request):
 
 
 def connect_process_longpull(request):
+    c_re=re.compile('Connect Part Done')
     print "Connect long pull post data is '%s'" % str(request.POST)
     if request.POST.has_key('logfile'):
         logfile = request.POST['logfile']
@@ -64,7 +65,11 @@ def connect_process_longpull(request):
         http://blog.csdn.net/dldx_062/article/details/8646970
         '''      
         result = {u"log":unicode(l_r, errors='ignore'), u"std":unicode(s_r, errors='ignore')}
-        print str(result)
+        if c_re.search(s_r):
+            result[u'is_end']=u'true'
+        else:
+            result[u'is_end']=u'false'
+        #print str(result)
         result_json = simplejson.dumps(result)
         # print "Json data is '%s'" % result_json
         return HttpResponse(result_json, content_type='application/javascript')
