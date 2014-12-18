@@ -42,7 +42,7 @@ def connect_process(request):
 
 
 def connect_process_longpull(request):
-    print 
+    print "Connect long pull post data is '%s'" % request.POST
     if request.POST.has_key('logfile'):
         logfile = request.POST['logfile']
     #stdout part
