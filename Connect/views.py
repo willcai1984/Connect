@@ -54,7 +54,7 @@ def connect_process_longpull(request):
         with open(stdfile) as s_o:
             s_r = s_o.read()
         result = {"log":l_r, "std":s_r}
-        result_json = simplejson.dumps(result, ensure_ascii=False)
+        result_json = simplejson.dumps(result)
         return HttpResponse(result_json, content_type='application/javascript')
     else:
         print "JS response has no logfile part"
