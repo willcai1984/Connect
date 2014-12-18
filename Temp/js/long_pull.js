@@ -9,7 +9,7 @@ function long_pull(logfile){
 	            type: "POST", 
 	            //data: JSON.stringify(jsondata),
 	            dataType: 'json',
-	            contentType : 'application/json',
+	            //contentType : 'application/json',
 	            data:"logfile="+logfile,
 	            cache: false,
 	            success: updater.onSuccess,
