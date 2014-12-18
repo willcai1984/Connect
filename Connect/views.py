@@ -45,15 +45,17 @@ def connect_process_longpull(request):
     print "Connect long pull post data is '%s'" % str(request.POST)
     if request.POST.has_key('logfile'):
         logfile = request.POST['logfile']
-    #stdout part
-    stdfile = log2std(logfile)
-    with open(logfile) as l_o:
-        l_r = l_o.read()
-    with open(stdfile) as s_o:
-        s_r = s_o.read()
-    result = {"log":l_r, "std":s_r}
-    result_json = simplejson.dumps(result, ensure_ascii=False)
-    return HttpResponse(result_json, content_type='application/x-javascript')
+        #stdout part
+        stdfile = log2std(logfile)
+        with open(logfile) as l_o:
+            l_r = l_o.read()
+        with open(stdfile) as s_o:
+            s_r = s_o.read()
+        result = {"log":l_r, "std":s_r}
+        result_json = simplejson.dumps(result, ensure_ascii=False)
+        return HttpResponse(result_json, content_type='application/x-javascript')
+    else:
+        print "JS response has no logfile part"
 
 def connect_success(request):
     render_to_response('html/Connect/success.html', {})

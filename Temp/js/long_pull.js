@@ -1,5 +1,6 @@
 function long_pull(logfile){
 	console.log("Start long pull, and the log file is "+logfile)
+	console.log('Json data is {"logfile" : "'+logfile+'"}')
 	var updater = {
 	    poll_post: function(){
 	        $.ajax({
