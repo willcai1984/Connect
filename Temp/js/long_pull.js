@@ -10,7 +10,7 @@ function long_pull(logfile,stdfile){
 	            //data: JSON.stringify(jsondata),
 	            //contentType : 'application/json',
 	            //Send data mode
-	            data:"logfile="+logfile+",stdfile="+stdfile,
+	            data:"logfile="+logfile+";stdfile="+stdfile,
 	            //Expect return data type
 	            dataType: 'json',	     
 	            cache: false,
