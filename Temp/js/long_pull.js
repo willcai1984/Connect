@@ -28,7 +28,7 @@ function long_pull(logfile,stdfile){
 	    	console.log("Log is: "+log)
 	    	console.log("Std is: "+std)
 	    	console.log("is_end is: "+is_end)
-	    	if (is_end=='false'){
+	    	if (is_end=='n'){
 		    //Write log parter, due to contains html sign, cannot use text 
 		    try{
 				$("#log").html(log);
@@ -51,6 +51,24 @@ function long_pull(logfile,stdfile){
 			interval = window.setTimeout(updater.poll_post, 2000);
 		}
 		else{
+		    try{
+				$("#log").html(log);
+				slider_down("#log");
+			}
+			catch(e){
+				console.log(e);
+				updater.onError();
+				return;
+			}
+		    try{
+				$("#std").html(std);
+				slider_down("#std");
+			}
+			catch(e){
+				console.log(e);
+				updater.onError();
+				return;
+			}
 		    updater.onComplete();
 		}
 			

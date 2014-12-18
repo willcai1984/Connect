@@ -66,9 +66,9 @@ def connect_process_longpull(request):
         '''      
         result = {u"log":unicode(l_r, errors='ignore'), u"std":unicode(s_r, errors='ignore')}
         if c_re.search(s_r):
-            result[u'is_end']=u'true'
+            result[u'is_end']=u'y'
         else:
-            result[u'is_end']=u'false'
+            result[u'is_end']=u'n'
         #print str(result)
         result_json = simplejson.dumps(result)
         # print "Json data is '%s'" % result_json
