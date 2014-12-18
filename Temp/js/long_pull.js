@@ -1,5 +1,5 @@
 function long_pull(logfile){
-	console.log("Start long pull, and the log file is "+log_file)
+	console.log("Start long pull, and the log file is "+logfile)
 	var updater = {
 	    poll_post: function(){
 	        $.ajax({
