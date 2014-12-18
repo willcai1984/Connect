@@ -54,7 +54,10 @@ def connect_process_longpull(request):
             l_r = l_o.read()
         with open(stdfile) as s_o:
             s_r = s_o.read()
+        print "Logfile is '%s'" % l_r
+        print "stdfile is '%s'" % s_r       
         result = {"log":l_r, "std":s_r}
+        print str(result)
         result_json = simplejson.dumps(result)
         print "Json data is '%s'" % result_json
         return HttpResponse(result_json, content_type='application/javascript')
