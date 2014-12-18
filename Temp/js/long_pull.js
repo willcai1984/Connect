@@ -44,8 +44,9 @@ function long_pull(logfile){
 			interval = window.setTimeout(updater.poll_post, 1000);
 		}, 
 		  
-	    onError: function(){
+	    onError: function (XMLHttpRequest, textStatus, errorThrown{ 
 	        console.log("Poll error;");
+	        alert(errorThrown);
 	    }
 	}    
 	updater.poll_post();
