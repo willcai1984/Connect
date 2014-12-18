@@ -42,6 +42,7 @@ def connect_process(request):
 
 
 def connect_process_longpull(request):
+    print 
     if request.POST.has_key('logfile'):
         logfile = request.POST['logfile']
     #stdout part

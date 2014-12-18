@@ -1,4 +1,4 @@
-function long_pull(log_file){
+function long_pull(logfile){
 	console.log("Start long pull, and the log file is "+log_file)
 	var updater = {
 	    poll_post: function(){
