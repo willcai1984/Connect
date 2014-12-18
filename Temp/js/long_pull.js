@@ -5,7 +5,7 @@ function long_pull(logfile){
 	    poll_post: function(){
 	        $.ajax({
 	        	url: "/connect/process/longpull/",
-	            type: "Post", 
+	            type: "POST", 
 	            //data: '{"logfile" : "'+logfile+'"}',
 	            //dataType: 'json',
 	            //contentType : 'application/json',
