@@ -20,7 +20,8 @@ function long_pull(logfile){
 	    	console.log("Get data is: "+data)
 	    	log=data.log
 	    	std=data.std
-	    	console.log("Get data successfully, start replace")
+	    	console.log("Log is: "+log)
+	    	console.log("Std is: "+std)
 		    //Write log parter, due to contains html sign, cannot use text 
 		    try{
 				$("#log").html(log);
