@@ -70,6 +70,7 @@ function long_pull(logfile,stdfile){
 				return;
 			}
 		    updater.onComplete();
+		    return;
 		}
 			
 	    }, 
