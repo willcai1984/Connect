@@ -47,7 +47,7 @@ function long_pull(logfile,stdfile){
 				updater.onError();
 				return;
 			}
-			interval = window.setTimeout(updater.poll_post, 2000);
+			interval = window.setTimeout(updater.poll_post, 1000);
 		}
 		else{
 		    try{
