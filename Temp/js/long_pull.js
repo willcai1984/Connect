@@ -1,4 +1,4 @@
-function long_pull(logfile){
+function long_pull(logfile,stdfile){
 	console.log("Start long pull, and the log file is "+logfile)
 	//console.log('Json data is {"logfile" : "'+logfile+'"}')
 	var jsondata={"logfile":logfile}
@@ -8,11 +8,11 @@ function long_pull(logfile){
 	        	url: "/connect/process/longpull/",
 	            type: "POST", 
 	            //data: JSON.stringify(jsondata),
-	            //Expect return data type
-	            dataType: 'json',
 	            //contentType : 'application/json',
 	            //Send data mode
-	            data:"logfile="+logfile,
+	            data:"logfile="+logfile+",stdfile="+stdfile,
+	            //Expect return data type
+	            dataType: 'json',	     
 	            cache: false,
 	            success: updater.onSuccess,
 	            error: updater.onError

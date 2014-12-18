@@ -47,7 +47,7 @@ def connect_process_longpull(request):
     if request.POST.has_key('logfile'):
         logfile = request.POST['logfile']
         #stdout part
-        stdfile = log2std(logfile)
+        stdfile = request.POST['stdfile']
         print "Logfile is '%s'" % logfile
         print "stdfile is '%s'" % stdfile
         with open(logfile) as l_o:
