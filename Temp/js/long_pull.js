@@ -25,8 +25,8 @@ function long_pull(logfile,stdfile){
 	    	log=data.log
 	    	std=data.std
 	    	is_end=data.is_end
-	    	console.log("Log is: "+log)
-	    	console.log("Std is: "+std)
+	    	//console.log("Log is: "+log)
+	    	//console.log("Std is: "+std)
 	    	console.log("is_end is: "+is_end)
 	    	if (is_end=='n'){
 		    //Write log parter, due to contains html sign, cannot use text 
