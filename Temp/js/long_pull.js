@@ -9,7 +9,7 @@ function long_pull(logfile){
 	            //data: '{"logfile" : "'+logfile+'"}',
 	            //dataType: 'json',
 	            //contentType : 'application/json',
-	            data="logfile="+logfile,
+	            data:"logfile="+logfile,
 	            cache: false,
 	            success: updater.onSuccess,
 	            error: updater.onError
