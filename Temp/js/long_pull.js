@@ -17,6 +17,7 @@ function long_pull(logfile){
 	    },
 
 	    onSuccess: function(data){
+	    	console.log("Get data is "+data)
 	    	log=data.log
 	    	std=data.std
 	    	console.log("Get data successfully, start replace")
