@@ -6,9 +6,10 @@ function long_pull(logfile){
 	        $.ajax({
 	        	url: "/connect/process/longpull/",
 	            type: "Post", 
-	            data: '{"logfile" : "'+logfile+'"}',
-	            dataType: 'json',
-	            contentType : 'application/json',
+	            //data: '{"logfile" : "'+logfile+'"}',
+	            //dataType: 'json',
+	            //contentType : 'application/json',
+	            data="logfile="+logfile,
 	            success: updater.onSuccess,
 	            error: updater.onError
 	            });
