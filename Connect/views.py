@@ -57,7 +57,10 @@ def connect_process_longpull(request):
         with open(stdfile) as s_o:
             s_r = s_o.read()
         #print "Logfile is '%s'" % l_r
-        #print "stdfile is '%s'" % s_r       
+        #print "stdfile is '%s'" % s_r
+        '''
+        http://blog.csdn.net/dldx_062/article/details/8646970
+        '''      
         result = {u"log":unicode(l_r, errors='ignore'), u"std":unicode(s_r, errors='ignore')}
         print str(result)
         result_json = simplejson.dumps(result)
