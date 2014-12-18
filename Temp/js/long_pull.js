@@ -15,8 +15,7 @@ function long_pull(logfile,stdfile){
 	            dataType: 'json',	     
 	            cache: false,
 	            success: updater.onSuccess,
-	            error: updater.onError,
-	            complete: updater.onComplete
+	            error: updater.onError
 	            });
 	    },
 
@@ -69,7 +68,7 @@ function long_pull(logfile,stdfile){
 				updater.onError();
 				return;
 			}
-		    updater.onComplete();
+		    alert("Task done");
 		    return;
 		}
 			
@@ -80,11 +79,7 @@ function long_pull(logfile,stdfile){
 	        console.log("XMLHttpRequest:"+XMLHttpRequest);
 	        console.log("textStatus:"+textStatus);
 	        console.log("errorThrown:"+errorThrown);
-	    },
-	    
-	    onComplete: function (){ 
-	        alert("Task done");
-	    }	    
+	    }  
 	    
 	}    
 	updater.poll_post();
