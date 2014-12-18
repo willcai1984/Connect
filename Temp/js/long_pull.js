@@ -46,7 +46,9 @@ function long_pull(logfile){
 		  
 	    onError: function (XMLHttpRequest, textStatus, errorThrown){ 
 	        console.log("Poll error;");
-	        alert(errorThrown);
+	        console.log("XMLHttpRequest:"+XMLHttpRequest);
+	        console.log("textStatus:"+textStatus);
+	        console.log("errorThrown:"+errorThrown);
 	    }
 	}    
 	updater.poll_post();
