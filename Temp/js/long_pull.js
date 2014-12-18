@@ -8,7 +8,7 @@ function long_pull(logfile){
 	        	url: "/connect/process/longpull/",
 	            type: "POST", 
 	            //data: JSON.stringify(jsondata),
-	            //dataType: 'json',
+	            dataType: 'json',
 	            //contentType : 'application/json',
 	            data:"logfile="+logfile,
 	            cache: false,
