@@ -8,7 +8,7 @@ import re, os, simplejson
 def connect_config(request):
     t = get_template('html/Connect/config.html')
     html = t.render(Context({'': ''}))
-    #return HttpResponse(html, content_type="application/x-javascript")
+    # return HttpResponse(html, content_type="application/x-javascript")
     return HttpResponse(html)
 
 def connect_process(request):
@@ -31,16 +31,16 @@ def connect_process(request):
         exec_cli_list.append("-l '%s'" % request.GET["logfile"])
     for i in range(1, 6):
         if "cli_" + str(i) in request.GET:
-            #Add "" for cr command
+            # Add "" for cr command
             exec '''exec_cli_list.append('-cr "'+request.GET['cli_%s']+'"')''' % i
-    #stdout part
+    # stdout part
     stdfile = log2std(request.GET["logfile"])
     exec_cli_list.append("1>" + stdfile + " 2>&1 &")
     exec_cli = ' '.join(exec_cli_list)
     os.system(exec_cli)
     t = get_template('html/Connect/process.html')
     html = t.render(Context({'stdfile':stdfile, 'logfile':request.GET["logfile"]}))
-    #return HttpResponse(html, content_type="application/x-javascript")
+    # return HttpResponse(html, content_type="application/x-javascript")
     return HttpResponse(html)
 
 
@@ -48,16 +48,16 @@ def connect_process_longpull(request):
     print "Connect long pull post data is '%s'" % str(request.POST)
     if request.POST.has_key('logfile'):
         logfile = request.POST['logfile']
-        #stdout part
+        # stdout part
         stdfile = request.POST['stdfile']
-        print "Logfile is '%s'" % logfile
-        print "stdfile is '%s'" % stdfile
+        # print "Logfile is '%s'" % logfile
+        # print "stdfile is '%s'" % stdfile
         with open(logfile) as l_o:
-            l_r = l_o.read()
+            l_r = re.sub(r'\n', r'</br>', l_o.read())
         with open(stdfile) as s_o:
-            s_r = s_o.read()
-        #print "Logfile is '%s'" % l_r
-        #print "stdfile is '%s'" % s_r
+            s_r = re.sub(r'\n', r'</br>', s_o.read())
+        # print "Logfile is '%s'" % l_r
+        # print "stdfile is '%s'" % s_r
         '''
         issue1
         UnicodeDecodeError: 'utf8' codec can't decode byte 0xff in position 380: invalid start byte
@@ -66,7 +66,7 @@ def connect_process_longpull(request):
         result = {u"log":unicode(l_r, errors='ignore'), u"std":unicode(s_r, errors='ignore')}
         print str(result)
         result_json = simplejson.dumps(result)
-        print "Json data is '%s'" % result_json
+        # print "Json data is '%s'" % result_json
         return HttpResponse(result_json, content_type='application/javascript')
     else:
         print "JS response has no logfile part"
@@ -79,15 +79,15 @@ def connect_fail(request):
 
 def log2std(logfile):
     log_dir, log_file = os.path.split(logfile)
-    #if null create the folder
+    # if null create the folder
     if not os.path.exists(log_dir):
         os.makedirs(log_dir) 
     log_file_name, log_file_suffix = os.path.splitext(log_file)
     stdfile = log_dir + '/' + log_file_name + '.std'
     if not os.path.exists(logfile):
-        #if null, create the file
+        # if null, create the file
         os.system("echo ''>" + logfile)
     if not os.path.exists(stdfile):
-        #if null, create the file
+        # if null, create the file
         os.system("echo ''>" + stdfile)
     return stdfile
