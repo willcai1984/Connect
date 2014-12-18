@@ -7,11 +7,11 @@ function long_pull(logfile){
 	        $.ajax({
 	        	url: "/connect/process/longpull/",
 	            type: "POST", 
-	            data: JSON.stringify(jsondata),
-	            dataType: 'json',
-	            contentType : 'application/json',
-	            //data:"logfile="+logfile,
-	            //cache: false,
+	            //data: JSON.stringify(jsondata),
+	            //dataType: 'json',
+	            //contentType : 'application/json',
+	            data:"logfile="+logfile,
+	            cache: false,
 	            success: updater.onSuccess,
 	            error: updater.onError
 	            });
