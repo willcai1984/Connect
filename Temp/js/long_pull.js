@@ -10,7 +10,7 @@ function long_pull(logfile){
 	            dataType: 'json',
 	            contentType : 'application/json',
 	            //data:"logfile="+logfile,
-	            cache: false,
+	            //cache: false,
 	            success: updater.onSuccess,
 	            error: updater.onError
 	            });
