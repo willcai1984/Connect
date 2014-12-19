@@ -10,7 +10,9 @@
 	$(document).ready(function(){
 		var elem1=$("#logfile").val();
 		var elem2=$("#stdfile").val();
-  		long_pull(elem1,elem2);
+		console.log("Process_logfile is "+elem1)
+		console.log("Process_stdfile is "+elem2)
+  		long_pull({{ logfile }},{{ stdfile }});
 	});
 </script>
 </head>
