@@ -12,7 +12,7 @@ def connect_config(request):
     return HttpResponse(html)
 
 def connect_process(request):
-    exec_cli_list = ["nohup python /home/will/git/AerohiveExpect/connect.py --debug info"]
+    exec_cli_list = ["nohup /usr/bin/python /home/will/git/AerohiveExpect/connect.py --debug info"]
     if "type" in request.GET:
         exec_cli_list.append("-m '%s'" % request.GET["type"])
     if "port" in request.GET:
