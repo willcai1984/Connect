@@ -4,7 +4,7 @@ from django.shortcuts import render_to_response
 from django.template.loader import get_template
 from django.template import Context
 from django.http import HttpResponse
-import re, os, simplejson
+import sys, re, os, simplejson
 def connect_config(request):
     t = get_template('html/Connect/config.html')
     html = t.render(Context({'': ''}))
@@ -37,6 +37,7 @@ def connect_process(request):
     stdfile = log2std(request.GET["logfile"])
     exec_cli_list.append("1>" + stdfile + " 2>&1 &")
     exec_cli = ' '.join(exec_cli_list)
+    sys.path.append('/home/will/git/')
     os.system(exec_cli)
     t = get_template('html/Connect/process.html')
     html = t.render(Context({'stdfile':stdfile, 'logfile':request.GET["logfile"]}))
@@ -45,7 +46,7 @@ def connect_process(request):
 
 
 def connect_process_longpull(request):
-    c_re=re.compile('Connect Part Done')
+    c_re = re.compile('Connect Part Done')
     print "Connect long pull post data is '%s'" % str(request.POST)
     if request.POST.has_key('logfile'):
         logfile = request.POST['logfile']
@@ -65,9 +66,9 @@ def connect_process_longpull(request):
         '''      
         result = {u"log":unicode(l_r, errors='ignore'), u"std":unicode(s_r, errors='ignore')}
         if c_re.search(s_r):
-            result[u'is_end']=u'y'
+            result[u'is_end'] = u'y'
         else:
-            result[u'is_end']=u'n'
+            result[u'is_end'] = u'n'
         #print str(result)
         result_json = simplejson.dumps(result)
         # print "Json data is '%s'" % result_json
