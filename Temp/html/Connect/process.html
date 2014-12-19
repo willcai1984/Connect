@@ -12,7 +12,7 @@
 		var elem2=$("#stdfile").val();
 		console.log("Process_logfile is "+elem1)
 		console.log("Process_stdfile is "+elem2)
-  		long_pull({{ logfile }},{{ stdfile }});
+  		long_pull("{{ logfile }}","{{ stdfile }}");
 	});
 </script>
 </head>
