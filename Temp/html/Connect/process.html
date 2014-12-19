@@ -8,10 +8,10 @@
 <link href="/css/input_format.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 	$(document).ready(function(){
-		var elem1=document.getElementById('logfile');  
-		var elem2=document.getElementById('stdfile');
+		var elem1=$("#logfile").val();
+		var elem2=$("#stdfile").val();
 		//alert(elem.innerHTML);
-  		long_pull(elem1.innerHTML,elem2.innerHTML);
+  		long_pull(elem1,elem2);
 	});
 </script>
 </head>
@@ -19,17 +19,6 @@
 <body>
 
 <p>Aerohive Capacity Process</p>
-
-<p align="center">Standard Output</p>
-
-<table border="1" align="center" bordercolor="#000000" style="width:1000px; height:300px;">
-	<tr>
-		<td id="stdfile">{{ stdfile }}</td>
-	</tr>
-	<tr>
-   		<td><div id="std" style="height:250px; overflow:auto; text-align: left;">&nbsp;</div></td>
-  	</tr>
-</table>
 
 <p align="center">Execute CLI Recorder</p>
 
@@ -39,6 +28,17 @@
 	</tr>
 	<tr>
    		<td><div id="log" style="height:400px; overflow:auto; text-align: left;">&nbsp;</div></td>
+  	</tr>
+</table>
+
+<p align="center">Standard Output</p>
+
+<table border="1" align="center" bordercolor="#000000" style="width:1000px; height:300px;">
+	<tr>
+		<td id="stdfile">{{ stdfile }}</td>
+	</tr>
+	<tr>
+   		<td><div id="std" style="height:250px; overflow:auto; text-align: left;">&nbsp;</div></td>
   	</tr>
 </table>
 
