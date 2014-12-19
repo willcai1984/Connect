@@ -12,7 +12,8 @@ def connect_config(request):
     return HttpResponse(html)
 
 def connect_process(request):
-    exec_cli_list = ["nohup /usr/bin/python /home/will/git/AerohiveExpect/connect.py --debug info"]
+    exec_cli_list = ['export PYTHONPATH=$PYTHONPATH:/home/will/git/;'] 
+    exec_cli_list.append("nohup /usr/bin/python /home/will/git/AerohiveExpect/connect.py --debug info")
     if "type" in request.GET:
         exec_cli_list.append("-m '%s'" % request.GET["type"])
     if "port" in request.GET:
@@ -37,9 +38,7 @@ def connect_process(request):
     stdfile = log2std(request.GET["logfile"])
     exec_cli_list.append("1>" + stdfile + " 2>&1 &")
     exec_cli = ' '.join(exec_cli_list)
-    sys.path.append('/home/will/git')
-    sys.path.append('/home/will/git/AerohiveExpect')
-    print 'Python sys.path is:' + str(sys.path)
+    print '''Exec CLI is: ''' + exec_cli
     os.system(exec_cli)
     t = get_template('html/Connect/process.html')
     html = t.render(Context({'stdfile':stdfile, 'logfile':request.GET["logfile"]}))
