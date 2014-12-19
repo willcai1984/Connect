@@ -38,6 +38,7 @@ def connect_process(request):
     exec_cli_list.append("1>" + stdfile + " 2>&1 &")
     exec_cli = ' '.join(exec_cli_list)
     sys.path.append('/home/will/git/')
+    print 'Python sys.path is:' + str(sys.path)
     os.system(exec_cli)
     t = get_template('html/Connect/process.html')
     html = t.render(Context({'stdfile':stdfile, 'logfile':request.GET["logfile"]}))
