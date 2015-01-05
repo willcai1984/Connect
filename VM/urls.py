@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'Connect.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^admin/', include(admin.site.urls)),
+    #url(r'^admin/', include(admin.site.urls)),
     url(r'^connect/config/', connect_config),
     url(r'^connect/process/$', connect_process),
     url(r'^connect/process/longpull/$', connect_process_longpull),
