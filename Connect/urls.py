@@ -16,9 +16,11 @@ urlpatterns = patterns('',
     url(r'^connect/success/', connect_success),
     url(r'^connect/fail/', connect_fail),
     
+    
     url(r'^js/(?P<path>.*)$', 'django.views.static.serve',
             {'document_root': '/home/will/git/Connect/Temp/js'}
     ),
+                       
     url(r'^css/(?P<path>.*)$', 'django.views.static.serve',
             {'document_root': '/home/will/git/Connect/Temp/css'}
     ),

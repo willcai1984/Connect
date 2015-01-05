@@ -4,6 +4,7 @@ from django.shortcuts import render_to_response
 from django.template.loader import get_template
 from django.template import Context
 from django.http import HttpResponse
+from Connect import log2std
 import sys, re, os, simplejson
 def connect_config(request):
     t = get_template('html/Connect/config.html')
@@ -82,18 +83,3 @@ def connect_success(request):
     
 def connect_fail(request):
     render_to_response('html/Connect/fail.html', {})
-
-def log2std(logfile):
-    log_dir, log_file = os.path.split(logfile)
-    # if null create the folder
-    if not os.path.exists(log_dir):
-        os.makedirs(log_dir) 
-    log_file_name, log_file_suffix = os.path.splitext(log_file)
-    stdfile = log_dir + '/' + log_file_name + '.std'
-    if not os.path.exists(logfile):
-        # if null, create the file
-        os.system("echo ''>" + logfile)
-    if not os.path.exists(stdfile):
-        # if null, create the file
-        os.system("echo ''>" + stdfile)
-    return stdfile
