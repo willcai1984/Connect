@@ -10,12 +10,12 @@
 		$("#connect").click(function(){
 	  		// submit the form without refrash
 	  		var options = {
-    			url:        "/vmware/connect/",
+    			url:        "/vm/connect/",
     			type:		"POST",
 				//success: 	function() {long_pull_log_stdout(logfile_path);}
     			success: 	function() {console.log('Connect target successfully');}
     			};
-			$("#connect_form").ajaxSubmit(options);
+			$("#vm_login_form").ajaxSubmit(options);
 			return false;
   		});	
 	});
