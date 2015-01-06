@@ -70,7 +70,7 @@ WSGI_APPLICATION = 'Connect.wsgi.application'
 DATABASES = {
     'default': {
                 'ENGINE': 'django.db.backends.mysql',
-                'NAME': 'connect',
+                'NAME': 'vmware',
                 'USER': 'root',
                 'PASSWORD': 'aerohive',
                 'HOST': '', #default is localhost
