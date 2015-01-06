@@ -1,6 +1,12 @@
 function long_pull_vm(ip){
-	console.log("Start long pull, and the Host is "+ip)
-	var jsondata={"ip":ip}
+	console.log("Start long pull, and the Host is "+ip);
+	var jsondata={"ip":ip};
+	var html='<tr><td style="width:10%;text-align:left;" border="1"><input type="checkbox" id="{{id}}" /></td>
+		<td style="width:30%;text-align:left;" border="1">{{dis}}</td>
+		<td style="width:20%;text-align:left;" border="1">{{power}}</td>
+		<td style="width:10%;text-align:left;" border="1">{{vmid}}</td>
+		<td style="width:30%;text-align:left;" border="1">{{reg}}</td>
+		</tr>';
 	var updater = {
 	    poll_post: function(){
 	        $.ajax({
@@ -19,57 +25,36 @@ function long_pull_vm(ip){
 	    },
 
 	    onSuccess: function(data){
-	    	console.log("Get data is: "+data)
-	    	log=data.log
-	    	std=data.std
-	    	is_end=data.is_end
-	    	//console.log("Log is: "+log)
-	    	//console.log("Std is: "+std)
-	    	console.log("is_end is: "+is_end)
-	    	if (is_end=='n'){
-		    //Write log parter, due to contains html sign, cannot use text 
-		    try{
-				$("#log").html(log);
-				slider_down("#log");
+	    	console.log("Get data is: "+data);
+	    	var length=Number(data.length);
+	    	var vmid_list=data.vmid_list.split(',');
+	    	var dis_list=data.dis_list.split(',');
+	    	var reg_list=data.reg_list.split(',');
+	    	var power_list=data.power_list.split(',');
+
+			try{
+				for (i=0;i<length;i++)
+				{
+				var id=i;
+				var vmid=vmid_list[i];
+				var dis=dis_list[i];
+				var reg=reg_list[i];
+				var power=power_list[i];
+				var add_html=html.replace(/{{id}}/g,'check'+i);
+				var add_html=add_html.replace(/{{dis}}/g,dis);
+				var add_html=add_html.replace(/{{power}}/g,power);
+				var add_html=add_html.replace(/{{vmid}}/g,vmid);
+				var add_html=add_html.replace(/{{reg}}/g,reg);
+				$("#vm_table").append(cli_tri_html);
+				}
 			}
 			catch(e){
 				console.log(e);
 				updater.onError();
 				return;
 			}
-		    try{
-				$("#std").html(std);
-				slider_down("#std");
-			}
-			catch(e){
-				console.log(e);
-				updater.onError();
-				return;
-			}
-			interval = window.setTimeout(updater.poll_post, 1000);
-		}
-		else{
-		    try{
-				$("#log").html(log);
-				slider_down("#log");
-			}
-			catch(e){
-				console.log(e);
-				updater.onError();
-				return;
-			}
-		    try{
-				$("#std").html(std);
-				slider_down("#std");
-			}
-			catch(e){
-				console.log(e);
-				updater.onError();
-				return;
-			}
-		    alert("Task done");
-		    return;
-		}
+			var interval = window.setTimeout(updater.poll_post, 1000);
+
 			
 	    }, 
 		  

@@ -4,8 +4,8 @@ from django.shortcuts import render_to_response
 from django.template.loader import get_template
 from django.template import Context
 from django.http import HttpResponse
-import sys, re, os, simplejson, time, MySQLdb
-
+import sys, re, os, simplejson, time
+from django.db import connection
 
 def vm_login(request):
     t = get_template('html/VM/vmware.html')
@@ -31,31 +31,35 @@ def vm_connect(request):
     print '''Exec CLI is: ''' + exec_cli
     os.system(exec_cli)
     
-    con = MySQLdb.connect(host='localhost', user='root', passwd='aerohive')
-    cursor = con.cursor()
-    con.select_db('vmware')
-
-    if request.POST.has_key('logfile'):
-        logfile = request.POST['logfile']
-        # stdout part
-        stdfile = request.POST['stdfile']
-        # print "Logfile is '%s'" % logfile
-        # print "stdfile is '%s'" % stdfile
-        with open(logfile) as l_o:
-            l_r = re.sub(r'\n', r'</br>', l_o.read())
-        with open(stdfile) as s_o:
-            s_r = re.sub(r'\n', r'</br>', s_o.read())
-        # print "Logfile is '%s'" % l_r
-        # print "stdfile is '%s'" % s_r
-        result = {u"log":unicode(l_r, errors='ignore'), u"std":unicode(s_r, errors='ignore')}
-        if c_re.search(s_r):
-            result[u'is_end'] = u'y'
-        else:
-            result[u'is_end'] = u'n'
-        #print str(result)
-        result_json = simplejson.dumps(result)
-        # print "Json data is '%s'" % result_json
-        return HttpResponse(result_json, content_type='application/javascript')
+def vm_longpull(request):
+    ip = request.POST['ip']
+    sql_table = 'h' + ip.replace('.', '_')
+    cursor = connection.cursor()
+    cursor.execute("use vmware")
+    cursor.execute("select * from %s where flag = 1 order by display" % sql_table)
+    vmid_dis_reg_power_flag_tuple = cursor.fetchall()
+    vmid_list = []
+    dis_list = []
+    reg_list = []
+    power_list = []
+    flag_list = []
+    for vmid, dis, reg, power, flag in vmid_dis_reg_power_flag_tuple:
+        if vmid:
+            vmid_list.append(vmid)
+            dis_list.append(dis)
+            reg_list.append(reg)
+            power_list.append(power)
+            flag_list.append(flag)
+    result = {u"length":len(vmid_list)}
+    
+    result[u"vmid_list"] = unicode(','.join(vmid_list), errors='ignore')
+    result[u"dis_list"] = unicode(','.join(dis_list), errors='ignore')
+    result[u"reg_list"] = unicode(','.join(reg_list), errors='ignore')
+    result[u"power_list"] = unicode(','.join(power_list), errors='ignore')
+    #print str(result)
+    result_json = simplejson.dumps(result)
+    # print "Json data is '%s'" % result_json
+    return HttpResponse(result_json, content_type='application/javascript')
     
 #def connect_config(request):
 #    t = get_template('html/Connect/config.html')
