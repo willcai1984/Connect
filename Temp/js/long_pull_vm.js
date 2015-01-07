@@ -1,12 +1,11 @@
 function long_pull_vm(ip){
 	console.log("Start long pull, and the Host is "+ip);
 	var jsondata={"ip":ip};
-	var html='<tr><td style="width:10%;text-align:left;" border="1"><input type="checkbox" id="{{id}}" /></td>
-		<td style="width:30%;text-align:left;" border="1">{{dis}}</td>
-		<td style="width:20%;text-align:left;" border="1">{{power}}</td>
-		<td style="width:10%;text-align:left;" border="1">{{vmid}}</td>
-		<td style="width:30%;text-align:left;" border="1">{{reg}}</td>
-		</tr>';
+	var html1='<tr><td style="width:10%;text-align:left;" border="1"><input type="checkbox" id="{{id}}" /></td>';
+	var	html2='<td style="width:30%;text-align:left;" border="1">{{dis}}</td>';
+	var	html3='<td style="width:20%;text-align:left;" border="1">{{power}}</td>';
+	var	html4='<td style="width:10%;text-align:left;" border="1">{{vmid}}</td>';
+	var	html5='<td style="width:30%;text-align:left;" border="1">{{reg}}</td></tr>';
 	var updater = {
 	    poll_post: function(){
 	        $.ajax({
@@ -40,12 +39,16 @@ function long_pull_vm(ip){
 				var dis=dis_list[i];
 				var reg=reg_list[i];
 				var power=power_list[i];
-				var add_html=html.replace(/{{id}}/g,'check'+i);
-				var add_html=add_html.replace(/{{dis}}/g,dis);
-				var add_html=add_html.replace(/{{power}}/g,power);
-				var add_html=add_html.replace(/{{vmid}}/g,vmid);
-				var add_html=add_html.replace(/{{reg}}/g,reg);
-				$("#vm_table").append(cli_tri_html);
+				var h1=html1.replace(/{{id}}/g,'check'+i);
+				var h2=html2.replace(/{{dis}}/g,dis);
+				var h3=html3.replace(/{{power}}/g,power);
+				var h4=html4.replace(/{{vmid}}/g,vmid);
+				var h5=html5.replace(/{{reg}}/g,reg);
+				$("#vm_table").append(h1);
+				$("#vm_table").append(h2);
+				$("#vm_table").append(h3);
+				$("#vm_table").append(h4);
+				$("#vm_table").append(h5);
 				}
 			}
 			catch(e){
