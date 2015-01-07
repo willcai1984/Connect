@@ -15,7 +15,7 @@
     			url:        "/vm/connect/",
     			type:		"POST",
 				//success: 	function() {long_pull_log_stdout(logfile_path);}
-    			success: 	function() {long_pull_vm(ip)}
+    			success: 	function() {long_pull_vm(ip);}
     			};
 			$("#vm_login_form").ajaxSubmit(options);
 			return false;

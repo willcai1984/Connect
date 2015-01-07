@@ -27,7 +27,9 @@ urlpatterns = patterns('',
     url(r'^css/(?P<path>.*)$', 'django.views.static.serve',
             {'document_root': '/home/will/git/Connect/Temp/css'}
     ),
-    #for html framework                  
+    #for html framework
+    #<frame src="vmware_top.html" name="topFrame" 
+    #url is http://10.155.39.227:8001/vm/login/vmware_top.html                 
     url(r'^vm/login/(?P<path>.*)$', 'django.views.static.serve',
             {'document_root': '/home/will/git/Connect/Temp/html/VM'}
     ),
