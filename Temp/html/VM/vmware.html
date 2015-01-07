@@ -5,15 +5,17 @@
 <title>VMware Status</title>
 <script type="text/javascript" src="/static/js/jquery.js"></script>
 <script type="text/javascript" src="/static/js/jquery.form.js"></script>
+<script type="text/javascript" src="/static/js/long_pull_vm.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#connect").click(function(){
 	  		// submit the form without refrash
-	  		var options = {
+	  		var ip = $("#ip").val();
+			var options = {
     			url:        "/vm/connect/",
     			type:		"POST",
 				//success: 	function() {long_pull_log_stdout(logfile_path);}
-    			success: 	function() {console.log('Connect target successfully');}
+    			success: 	function() {long_pull_vm(ip)}
     			};
 			$("#vm_login_form").ajaxSubmit(options);
 			return false;
