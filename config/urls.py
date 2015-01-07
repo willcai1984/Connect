@@ -3,7 +3,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from Connect.views import connect_config, connect_process, connect_process_longpull, connect_success, connect_fail
-
+from VM.views import vm_login, vm_connect
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'Connect.views.home', name='home'),
