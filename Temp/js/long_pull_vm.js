@@ -69,6 +69,3 @@ function long_pull_vm(ip){
 	}    
 	updater.poll_post();
 }
-
-
-}
