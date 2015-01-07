@@ -14,7 +14,7 @@ function long_pull_vm(ip){
 	            //data: JSON.stringify(jsondata),
 	            //contentType : 'application/json',
 	            //Send data mode
-	            data:"ip="+ip+","
+	            data:"ip="+ip,
 	            //Expect return data type
 	            dataType: "json",	     
 	            cache: false,
