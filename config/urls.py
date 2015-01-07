@@ -15,7 +15,9 @@ urlpatterns = patterns('',
     url(r'^connect/process/longpull/$', connect_process_longpull),
     url(r'^connect/success/', connect_success),
     url(r'^connect/fail/', connect_fail),
-    url(r'^vm/login/', vm_login),
+    url(r'^vm/login/$', vm_login),
+
+    url(r'^vm/login/$', vm_login),
     url(r'^vm/connect/$', vm_connect),
     
     url(r'^js/(?P<path>.*)$', 'django.views.static.serve',
@@ -24,5 +26,9 @@ urlpatterns = patterns('',
                        
     url(r'^css/(?P<path>.*)$', 'django.views.static.serve',
             {'document_root': '/home/will/git/Connect/Temp/css'}
+    ),
+    #for html framework                  
+    url(r'^vm/login/(?P<path>.*)$', 'django.views.static.serve',
+            {'document_root': '/home/will/git/Connect/Temp/html/VM'}
     ),
 )
