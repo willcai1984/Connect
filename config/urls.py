@@ -15,8 +15,6 @@ urlpatterns = patterns('',
     url(r'^connect/process/longpull/$', connect_process_longpull),
     url(r'^connect/success/', connect_success),
     url(r'^connect/fail/', connect_fail),
-    
-    
     url(r'^vm/login/', vm_login),
     url(r'^vm/connect/$', vm_connect),
     
