@@ -44,11 +44,9 @@ function long_pull_vm(ip){
 				var h3=html3.replace(/{{power}}/g,power);
 				var h4=html4.replace(/{{vmid}}/g,vmid);
 				var h5=html5.replace(/{{reg}}/g,reg);
-				$("#vm_table").append(h1);
-				$("#vm_table").append(h2);
-				$("#vm_table").append(h3);
-				$("#vm_table").append(h4);
-				$("#vm_table").append(h5);
+				var h=h1+h2+h3+h4+h5;
+				console.log("Append html is:"+h);
+				$("#vm_table").append(h);
 				}
 			}
 			catch(e){
