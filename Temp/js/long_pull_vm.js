@@ -14,9 +14,9 @@ function long_pull_vm(ip){
 	            //data: JSON.stringify(jsondata),
 	            //contentType : 'application/json',
 	            //Send data mode
-	            data:"ip="+ip+",
+	            data:"ip="+ip+","
 	            //Expect return data type
-	            dataType: 'json',	     
+	            dataType: "json",	     
 	            cache: false,
 	            success: updater.onSuccess,
 	            error: updater.onError
@@ -56,7 +56,7 @@ function long_pull_vm(ip){
 				updater.onError();
 				return;
 			}
-			var interval = window.setTimeout(updater.poll_post, 1000);
+			var interval = window.setTimeout(updater.poll_post, 10000);
 
 			
 	    }, 
