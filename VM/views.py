@@ -7,9 +7,9 @@ from django.http import HttpResponse
 import sys, re, os, simplejson, time
 from django.db import connection
 
-def vm_login(request):
-    t = get_template('html/VM/vmware.html')
-    html = t.render(Context({'': ''}))
+def vm_manage(request):
+    t = get_template('html/VM/vmware_manage.html')
+    html = t.render(Context({'':''}))
     return HttpResponse(html)
 
 def vm_connect(request):
