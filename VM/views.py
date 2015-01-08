@@ -25,7 +25,8 @@ def vm_connect(request):
     exec_cli_list.append('-i ' + ip)
     exec_cli_list.append('-u ' + user)
     exec_cli_list.append('-p ' + passwd)
-    exec_cli_list.append('-l ' + logfile)    
+    exec_cli_list.append('-l ' + logfile)
+    exec_cli_list.append('--parameters ' + logfile)   
     exec_cli_list.append("1>" + stdfile + " 2>&1")
     exec_cli = ' '.join(exec_cli_list)
     print '''Exec CLI is: ''' + exec_cli
