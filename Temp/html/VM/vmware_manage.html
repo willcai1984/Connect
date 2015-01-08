@@ -17,6 +17,8 @@
 	  		var ip 		= $("#ip").val();
 			var user	= $("#user").val();
 			var passwd	= $("#passwd").val();
+			var json_data="ip="+ip+";user="+user+";passwd="+passwd;
+			console.log("Send data is:"+json_data)
 			var updater = {
 				    poll_post: function(){
 				        $.ajax({
@@ -25,7 +27,7 @@
 				            //data: JSON.stringify(jsondata),
 				            //contentType : 'application/json',
 				            //Send data mode
-				            data:"ip="+ip+";"+"user="+user+";"+"passwd="+passwd,
+				            data:json_data,
 				            //Expect return data type
 				            dataType: "json",	     
 				            cache: false,
