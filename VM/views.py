@@ -16,6 +16,7 @@ def vm_connect(request):
     ip = request.POST['ip']
     user = request.POST['user']
     passwd = request.POST['passwd']
+    sql_name = 'h' + ip.replace('.', '_')
     logdir = '/var/log/will/vm/'
     fname = time.strftime('%Y%m%d%H%M%S', time.gmtime())
     logfile = logdir + fname + '.log'
@@ -26,18 +27,45 @@ def vm_connect(request):
     exec_cli_list.append('-u ' + user)
     exec_cli_list.append('-p ' + passwd)
     exec_cli_list.append('-l ' + logfile)
-    exec_cli_list.append('--parameters ' + logfile)   
+    exec_cli_list.append('--parameters sql.name=' + sql_name)   
     exec_cli_list.append("1>" + stdfile + " 2>&1")
     exec_cli = ' '.join(exec_cli_list)
     print '''Exec CLI is: ''' + exec_cli
     os.system(exec_cli)
-    
-def vm_longpull(request):
-    ip = request.POST['ip']
-    sql_table = 'h' + ip.replace('.', '_')
     cursor = connection.cursor()
     cursor.execute("use vmware")
-    cursor.execute("select * from %s where flag = 1 order by display" % sql_table)
+    cursor.execute("select * from %s where flag = 1 order by display" % sql_name)
+    vmid_dis_reg_power_flag_tuple = cursor.fetchall()
+    vmid_list = []
+    dis_list = []
+    reg_list = []
+    power_list = []
+    flag_list = []
+    for vmid, dis, reg, power, flag in vmid_dis_reg_power_flag_tuple:
+        if vmid:
+            vmid_list.append(vmid)
+            dis_list.append(dis)
+            reg_list.append(reg)
+            power_list.append(power)
+            flag_list.append(flag)
+    result = {u"length":len(vmid_list)}
+    result[u"vmid_list"] = unicode(','.join(vmid_list), errors='ignore')
+    result[u"dis_list"] = unicode(','.join(dis_list), errors='ignore')
+    result[u"reg_list"] = unicode(','.join(reg_list), errors='ignore')
+    result[u"power_list"] = unicode(','.join(power_list), errors='ignore')
+    #print str(result)
+    result_json = simplejson.dumps(result)
+    # print "Json data is '%s'" % result_json
+    return HttpResponse(result_json, content_type='application/javascript')
+
+
+
+def vm_longpull(request):
+    ip = request.POST['ip']
+    sql_name = 'h' + ip.replace('.', '_')
+    cursor = connection.cursor()
+    cursor.execute("use vmware")
+    cursor.execute("select * from %s where flag = 1 order by display" % sql_name)
     vmid_dis_reg_power_flag_tuple = cursor.fetchall()
     vmid_list = []
     dis_list = []
