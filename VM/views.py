@@ -74,9 +74,7 @@ def vm_connect(request):
     # print "Json data is '%s'" % result_json
     return HttpResponse(result_json, content_type='application/javascript')
 
-
-
-def vm_longpull(request):
+def vm_refrash(request):
     ip = request.POST['ip']
     sql_name = 'h' + ip.replace('.', '_')
     cursor = connection.cursor()
@@ -96,11 +94,26 @@ def vm_longpull(request):
             power_list.append(power)
             flag_list.append(flag)
     result = {u"length":len(vmid_list)}
-    
-    result[u"vmid_list"] = unicode(','.join(vmid_list), errors='ignore')
-    result[u"dis_list"] = unicode(','.join(dis_list), errors='ignore')
-    result[u"reg_list"] = unicode(','.join(reg_list), errors='ignore')
-    result[u"power_list"] = unicode(','.join(power_list), errors='ignore')
+    vmid_s = ','.join(vmid_list)
+    if type(vmid_s) != type(u''):
+        result[u"vmid_list"] = unicode(vmid_s, errors='ignore')
+    else:
+        result[u"vmid_list"] = vmid_s
+    dis_s = ','.join(dis_list)
+    if type(dis_s) != type(u''):
+        result[u"dis_list"] = unicode(dis_s, errors='ignore')
+    else:
+        result[u"dis_list"] = dis_s
+    reg_s = ','.join(reg_list)
+    if type(reg_s) != type(u''):  
+        result[u"reg_list"] = unicode(reg_s, errors='ignore')
+    else:
+        result[u"reg_list"] = reg_s
+    power_s = ','.join(power_list)
+    if type(power_s) != type(u''):
+        result[u"power_list"] = unicode(power_s, errors='ignore')
+    else:
+        result[u"power_list"] = power_s
     #print str(result)
     result_json = simplejson.dumps(result)
     # print "Json data is '%s'" % result_json

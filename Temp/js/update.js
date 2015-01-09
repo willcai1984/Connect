@@ -1,7 +1,7 @@
 var updater = {
-    poll_post: function(json_data){
+    poll_post: function(url,json_data){
         $.ajax({
-        	url: "/vm/connect/",
+        	url: url,
             type: "POST", 
             //data: JSON.stringify(jsondata),
             //contentType : 'application/json',

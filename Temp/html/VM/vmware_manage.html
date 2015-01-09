@@ -14,21 +14,22 @@
 	$(document).ready(function(){
 		$("#connect").click(function(){
 	  		// submit the form without refrash
-	  		var ip 		= $("#ip").val();
-			var user	= $("#user").val();
-			var passwd	= $("#passwd").val();
-			var json_data="ip="+ip+";user="+user+";passwd="+passwd;
+	  		var ip 			= $("#ip").val();
+			var user		= $("#user").val();
+			var passwd		= $("#passwd").val();
+			var json_data	= "ip="+ip+";user="+user+";passwd="+passwd;
+			var url			= "/vm/connect/";
 			console.log("Send data is:"+json_data);
-			updater.poll_post(json_data);
+			updater.poll_post(json_data,url);
   		});
  		$("#refrash").click(function(){
-	  		// submit the form without refrash
-	  		var ip 		= $("#ip").val();
-			var user	= $("#user").val();
-			var passwd	= $("#passwd").val();
-			var json_data="ip="+ip+";user="+user+";passwd="+passwd;
+	  		var ip 			= $("#ip").val();
+			var user		= $("#user").val();
+			var passwd		= $("#passwd").val();
+			var json_data	= "ip="+ip;
+			var url			= "/vm/refrash/";
 			console.log("Send data is:"+json_data);
-			updater.poll_post(json_data);
+			updater.poll_post(json_data,url);
   		});
 	});
 </script>

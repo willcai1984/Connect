@@ -3,7 +3,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from Connect.views import connect_config, connect_process, connect_process_longpull, connect_success, connect_fail
-from VM.views import vm_manage, vm_connect
+from VM.views import vm_manage, vm_connect, vm_refrash
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'Connect.views.home', name='home'),
@@ -16,9 +16,8 @@ urlpatterns = patterns('',
     url(r'^connect/success/', connect_success),
     url(r'^connect/fail/', connect_fail),
     url(r'^vm/manage/$', vm_manage),
-
     url(r'^vm/connect/$', vm_connect),
-    
+    url(r'^vm/refrash/$', vm_refrash),
     url(r'^js/(?P<path>.*)$', 'django.views.static.serve',
             {'document_root': '/home/will/git/Connect/Temp/js'}
     ),
