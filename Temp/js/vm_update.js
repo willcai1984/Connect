@@ -10,8 +10,8 @@ var vm_updater = {
             //Expect return data type
             dataType: "json",	     
             cache: false,
-            success: updater.onSuccess,
-            error: updater.onError
+            success: vm_updater.onSuccess,
+            error: vm_updater.onError
             });
     },
 
@@ -48,11 +48,11 @@ var vm_updater = {
 		}
 		catch(e){
 			console.log(e);
-			updater.onError();
+			vm_updater.onError();
 			return;
 		}
 		//Login part only need show items all, no need renew per 10s
-		//var interval = window.setTimeout(updater.poll_post, 10000);
+		//var interval = window.setTimeout(vm_updater.poll_post, 10000);
     }, 
 	  
     onError: function (XMLHttpRequest, textStatus, errorThrown){ 
