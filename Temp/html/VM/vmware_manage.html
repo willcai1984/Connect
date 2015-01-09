@@ -40,7 +40,7 @@
 	  		var vmid_list=new Array();
 	  		for (id in id_list)
 	  		{
-	  			vmid=id.replace(/check/g,'vmid');
+	  			vmid=id_list[id].replace(/check/g,'vmid');
 	  			console.log(vmid);
 	  			var vmid_val=$("#"+vmid).val();
 	  			console.log(vmid_val);
