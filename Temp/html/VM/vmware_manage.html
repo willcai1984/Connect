@@ -22,6 +22,7 @@
 			console.log("Send data is:"+json_data);
 			vm_updater.poll_post(url,json_data);
   		});
+ 		
  		$("#refrash").click(function(){
 	  		var ip 			= $("#ip").val();
 			var user		= $("#user").val();
@@ -33,8 +34,9 @@
   		});
   		
   		$("#check0").click(function(){
-			alert($("#check0").attr("checked")
+			alert($("#check0").attr("checked"));
   		});
+  		
 	});
 	
 </script>
