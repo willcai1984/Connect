@@ -35,13 +35,16 @@
   		});
   		
   		$("#on").click(function(){
-	  		id_list=vm_get_checked()
-	  		console.log(id_list)
-	  		var vmid_list=new Array()
+	  		id_list=vm_get_checked();
+	  		console.log(id_list);
+	  		var vmid_list=new Array();
 	  		for (id in id_list)
 	  		{
 	  			vmid=id.replace(/check/g,'vmid');
-	  			vmid_list.push($("#"+vmid).val());
+	  			console.log(vmid);
+	  			var vmid_val=$("#"+vmid).val();
+	  			console.log(vmid_val);
+	  			vmid_list.push(vmid_val);
 	  		}
 	  		console.log(vmid_list)
   		});
