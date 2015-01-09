@@ -6,7 +6,7 @@
 <script type="text/javascript" src="/js/jquery.js"></script>
 <script type="text/javascript" src="/js/vm_update.js"></script>
 <script type="text/javascript">
-	var html1='<tr><td style="width:5%;text-align:left;" border="1"><input type="checkbox" id="__id__" /></td>';
+	var html1='<tr><td style="width:5%;text-align:left;" border="1"><input type="checkbox" name="vmlist" id="__id__" /></td>';
 	var	html2='<td id="__id__" style="width:25%;text-align:left;" border="1">__dis__</td>';
 	var	html3='<td id="__id__" style="width:10%;text-align:left;" border="1">__power__</td>';
 	var	html4='<td id="__id__" style="width:10%;text-align:left;" border="1">__vmid__</td>';
@@ -31,10 +31,6 @@
 			var url			= "/vm/connect/";
 			console.log("Send data is:"+json_data);
 			vm_updater.poll_post(url,json_data);
-  		});
-  		
-  		$("#check0").click(function(){
-			alert($("#check0").attr("checked"));
   		});
   		
 	});
