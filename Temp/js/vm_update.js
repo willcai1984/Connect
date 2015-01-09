@@ -1,4 +1,4 @@
-var updater = {
+var vm_updater = {
     poll_post: function(url,json_data){
         $.ajax({
         	url: url,
