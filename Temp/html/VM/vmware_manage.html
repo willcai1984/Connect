@@ -20,7 +20,7 @@
 			var json_data	= "ip="+ip+";user="+user+";passwd="+passwd;
 			var url			= "/vm/connect/";
 			console.log("Send data is:"+json_data);
-			updater.poll_post(json_data,url);
+			updater.poll_post(url,json_data);
   		});
  		$("#refrash").click(function(){
 	  		var ip 			= $("#ip").val();
@@ -29,7 +29,7 @@
 			var json_data	= "ip="+ip;
 			var url			= "/vm/connect/";
 			console.log("Send data is:"+json_data);
-			updater.poll_post(json_data,url);
+			updater.poll_post(url,json_data);
   		});
 	});
 </script>
