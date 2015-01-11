@@ -123,6 +123,7 @@ def vm_refrash(request):
 
 def vm_power(request):
     #json_data    = "vmid=vmid_txt;power_action=power_action"
+    print "Power data is :" + str(request.POST)
     vmid = request.POST['vmid']
     power_action = request.POST['power_action']
     power_id = request.POST['power_id']
