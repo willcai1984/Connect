@@ -102,7 +102,12 @@
   			if (is_check=="0")
   				{
   				$(":checkbox[name='vmlist']").each(function() {
-					 $(this).attr('checked', true);
+					 //Only take effort 1 time
+					 //$(this).attr('checked', true);
+					 //Solution1
+					 this.checked=true;
+					 //Solution2
+					 //$(this).prop('checked', true);
 				});
   				 $(this).val("1");
   				alert("Check all");
@@ -110,7 +115,8 @@
   			else
   				{
   				$(":checkbox[name='vmlist']").each(function() {
-					 $(this).attr('checked', false);
+					 //$(this).attr('checked', false);
+					 this.checked=false;
 				});
   				 $(this).val("0");
   				alert("Uncheck all");
