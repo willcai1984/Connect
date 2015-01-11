@@ -138,7 +138,7 @@ def vm_power(request):
     exec_cli_list.append('-u ' + user)
     exec_cli_list.append('-p ' + passwd)
     exec_cli_list.append('-l ' + logfile)
-    exec_cli_list.append('--parameters sql.name=' + sql_name)   
+    exec_cli_list.append('--parameters vm.is_id=true vm.id=' + vmid)   
     exec_cli_list.append("1>" + stdfile + " 2>&1")
     exec_cli = ' '.join(exec_cli_list)
     print '''Exec CLI is: ''' + exec_cli
