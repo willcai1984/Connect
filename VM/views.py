@@ -131,7 +131,7 @@ def vm_power(request):
         pass
     else:
         pass
-    result = {u"power_id":power_id, u"power_result":u"1"}
+    result = {u"power_id":power_id, u"power_result":u"1", u"power_action":power_action}
     #print str(result)
     result_json = simplejson.dumps(result)
     # print "Json data is '%s'" % result_json

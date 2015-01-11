@@ -1,5 +1,5 @@
 var vm_power_updater = {
-    poll_post: function(url,json_data,power_action){
+    poll_post: function(url,json_data){
         $.ajax({
         	url: url,
             type: "POST", 
@@ -19,6 +19,7 @@ var vm_power_updater = {
     	console.log("Get data is: "+data);
     	var power_result=data.power_result;
 		var power_id=data.power_id;
+		var power_action=data.power_action;
 		try{
 			if (power_result=='1')
 					{
