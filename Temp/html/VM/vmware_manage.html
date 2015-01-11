@@ -63,14 +63,28 @@
   		});
  
    		$("#off").click(function(){
-	  		id_list=vm_get_checked()
-	  		var vmid_list=new Array()
+	  		id_list=vm_get_checked();
+	  		console.log(id_list);
+	  		//var vmid_list=new Array();
+	  		var ip 			= $("#ip").val();
+			var user		= $("#user").val();
+			var passwd		= $("#passwd").val();
 	  		for (id in id_list)
 	  		{
-	  			vmid=id.replace(/check/g,'vmid');
-	  			vmid_list.push($("#"+vmid).val());
+	  			vmid=id_list[id].replace(/check/g,'vmid');
+	  			power=id_list[id].replace(/check/g,'power');
+	  			console.log(vmid);
+	  			var vmid_txt=$("#"+vmid).text();
+	  			var power_txt=$("#"+power).text();
+	  			//console.log(vmid_txt);
+	  			//vmid_list.push(vmid_txt);
+				if (power_txt=='0')
+					{
+					var url			= "/vm/power/";
+					var json_data	= "ip="+ip+";user="+user+";passwd="+passwd+";vmid="+vmid_txt+";power_id="+power+";power_action=off";
+				 	vm_power_updater.poll_post(url,json_data);
+					}
 	  		}
-	  		console.log(vmid_list)
   		});	
 
   		$("#copy").click(function(){
