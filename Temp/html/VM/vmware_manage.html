@@ -116,7 +116,8 @@
   				{
   				$(":checkbox[name='vmlist']").each(function() {
 					 //$(this).attr('checked', false);
-					 this.checked=false;
+					 //this.checked=false;
+					 $(this).prop('checked', false);
 				});
   				 $(this).val("0");
   				alert("Uncheck all");

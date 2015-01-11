@@ -16,7 +16,7 @@ var vm_power_updater = {
     },
 
     onSuccess: function(data){
-    	console.log("Get data is: "+data);
+    	//console.log("Get data is: "+data);
     	var power_result=data.power_result;
 		var power_id=data.power_id;
 		var power_action=data.power_action;
@@ -27,10 +27,12 @@ var vm_power_updater = {
 						{
 						//Set power id from 0 to 1
 						$("#"+power_id).text('1');
+						console.log("Power on "+power_id+" successfully");
 						}
 					else if (power_action=='off')
 						{
 						$("#"+power_id).text('0');
+						console.log("Power off "+power_id+" successfully");
 						}
 					}
 		}
