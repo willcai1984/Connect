@@ -101,11 +101,17 @@
   			var is_check= $(this).val();
   			if (is_check=="0")
   				{
+  				$(":checkbox[name='vmlist']").each(function() {
+					 $(this).attr('checked', true);
+				});
   				 $(this).val("1");
   				alert("Check all");
   				}
   			else
   				{
+  				$(":checkbox[name='vmlist']").each(function() {
+					 $(this).attr('checked', false);
+				});
   				 $(this).val("0");
   				alert("Uncheck all");
   				}
