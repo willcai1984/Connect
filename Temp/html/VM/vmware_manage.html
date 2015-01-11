@@ -43,7 +43,7 @@
 			var user		= $("#user").val();
 			var passwd		= $("#passwd").val();
 	  		for (id in id_list)
-	  		{
+	  			{
 	  			vmid=id_list[id].replace(/check/g,'vmid');
 	  			power=id_list[id].replace(/check/g,'power');
 	  			console.log(vmid);
@@ -57,7 +57,7 @@
 					var json_data	= "ip="+ip+";user="+user+";passwd="+passwd+";vmid="+vmid_txt+";power_id="+power+";power_action=on";
 				 	vm_power_updater.poll_post(url,json_data);
 					}
-	  		}
+	  			}
 	  		//console.log(vmid_list)
 	  		alert('Power on task done');
 	  		
@@ -71,7 +71,7 @@
 			var user		= $("#user").val();
 			var passwd		= $("#passwd").val();
 	  		for (id in id_list)
-	  		{
+	  			{
 	  			vmid=id_list[id].replace(/check/g,'vmid');
 	  			power=id_list[id].replace(/check/g,'power');
 	  			console.log(vmid);
@@ -85,7 +85,7 @@
 					var json_data	= "ip="+ip+";user="+user+";passwd="+passwd+";vmid="+vmid_txt+";power_id="+power+";power_action=off";
 				 	vm_power_updater.poll_post(url,json_data);
 					}
-	  		}
+	  			}
 	  		alert('Power off task done');
   		});	
 
