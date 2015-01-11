@@ -1,4 +1,4 @@
-var vm_updater = {
+var vm_power_updater = {
     poll_post: function(url,json_data,power_action){
         $.ajax({
         	url: url,
@@ -10,8 +10,8 @@ var vm_updater = {
             //Expect return data type
             dataType: "json",	     
             cache: false,
-            success: vm_updater.onSuccess,
-            error: vm_updater.onError
+            success: vm_power_updater.onSuccess,
+            error: vm_power_updater.onError
             });
     },
 
@@ -34,11 +34,11 @@ var vm_updater = {
 		}
 		catch(e){
 			console.log(e);
-			vm_updater.onError();
+			vm_power_updater.onError();
 			return;
 		}
 		//Login part only need show items all, no need renew per 10s
-		//var interval = window.setTimeout(vm_updater.poll_post, 10000);
+		//var interval = window.setTimeout(vm_power_updater.poll_post, 10000);
     }, 
 	  
     onError: function (XMLHttpRequest, textStatus, errorThrown){ 
