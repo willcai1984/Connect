@@ -37,16 +37,25 @@
   		$("#on").click(function(){
 	  		id_list=vm_get_checked();
 	  		console.log(id_list);
-	  		var vmid_list=new Array();
+	  		//var vmid_list=new Array();
 	  		for (id in id_list)
 	  		{
 	  			vmid=id_list[id].replace(/check/g,'vmid');
+	  			power=id_list[id].replace(/check/g,'power');
 	  			console.log(vmid);
 	  			var vmid_txt=$("#"+vmid).text();
-	  			console.log(vmid_txt);
-	  			vmid_list.push(vmid_txt);
+	  			var power_txt=$("#"+power).text();
+	  			//console.log(vmid_txt);
+	  			//vmid_list.push(vmid_txt);
+				if (power_txt=='0')
+					{
+					var url			= "/vm/power/";
+					var json_data	= "vmid="+vmid_txt";power_action="+on";power_id="+power;
+				 	vm_power_updater.poll_post(url,json_data,"on");
+					}
 	  		}
-	  		console.log(vmid_list)
+	  		//console.log(vmid_list)
+	  		
   		});
  
    		$("#off").click(function(){

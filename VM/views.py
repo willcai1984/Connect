@@ -118,7 +118,24 @@ def vm_refrash(request):
     result_json = simplejson.dumps(result)
     # print "Json data is '%s'" % result_json
     return HttpResponse(result_json, content_type='application/javascript')
-    
+
+
+
+def vm_power(request):
+    #json_data    = "vmid=vmid_txt;power_action=power_action"
+    vmid = request.POST['vmid']
+    power_action = request.POST['power_action']
+    power_id = request.POST['power_id']
+    if str(power_action) == 'on':
+        pass
+    else:
+        pass
+    result = {u"power_id":power_id, u"power_result":u"1"}
+    #print str(result)
+    result_json = simplejson.dumps(result)
+    # print "Json data is '%s'" % result_json
+    return HttpResponse(result_json, content_type='application/javascript')
+
 #def connect_config(request):
 #    t = get_template('html/Connect/config.html')
 #    html = t.render(Context({'': ''}))

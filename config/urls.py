@@ -18,6 +18,8 @@ urlpatterns = patterns('',
     url(r'^vm/manage/$', vm_manage),
     url(r'^vm/connect/$', vm_connect),
     url(r'^vm/refrash/$', vm_refrash),
+    url(r'^vm/power/$', vm_refrash),
+    
     url(r'^js/(?P<path>.*)$', 'django.views.static.serve',
             {'document_root': '/home/will/git/Connect/Temp/js'}
     ),
