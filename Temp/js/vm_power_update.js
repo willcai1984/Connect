@@ -25,6 +25,7 @@ var vm_power_updater = {
 					{
 					if (power_action=='on')
 						{
+						//Set power id from 0 to 1
 						$("#"+power_id).text('1');
 						}
 					else if (power_action=='off')
