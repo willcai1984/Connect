@@ -51,7 +51,7 @@
 				if (power_txt=='0')
 					{
 					var url			= "/vm/power/";
-					var json_data	= "vmid="+vmid_txt";power_action="+on";power_id="+power;
+					var json_data	= "vmid="+vmid_txt+";power_action="+on+";power_id="+power;
 				 	vm_power_updater.poll_post(url,json_data,"on");
 					}
 	  		}
