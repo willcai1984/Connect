@@ -17,10 +17,7 @@ def vm_connect(request):
     user = request.POST['user']
     passwd = request.POST['passwd']
     sql_name = 'h' + ip.replace('.', '_')
-    logdir = '/var/log/will/vm/'
-    fname = time.strftime('%Y%m%d%H%M%S', time.gmtime())
-    logfile = logdir + fname + '.log'
-    stdfile = logdir + fname + '.std'
+    logfile, stdfile = _log()
     exec_cli_list = ['export PYTHONPATH=$PYTHONPATH:/home/will/git/;'] 
     exec_cli_list.append("/usr/bin/python /home/will/git/VMware/scripts/vm_db.py --debug info")
     exec_cli_list.append('-i ' + ip)
@@ -125,18 +122,40 @@ def vm_power(request):
     #json_data    = "vmid=vmid_txt;power_action=power_action"
     print "Power data is :" + str(request.POST)
     vmid = request.POST['vmid']
+    ip = request.POST['ip']
+    user = request.POST['user']
+    passwd = request.POST['passwd']
+    logfile, stdfile = _log()
     power_action = request.POST['power_action']
     power_id = request.POST['power_id']
+    
+    exec_cli_list = ['export PYTHONPATH=$PYTHONPATH:/home/will/git/;']
     if str(power_action) == 'on':
-        pass
-    else:
-        pass
+        exec_cli_list.append("/usr/bin/python /home/will/git/VMware/scripts/vm_poweron.py --debug info")
+    elif str(power_action) == 'off':
+        exec_cli_list.append("/usr/bin/python /home/will/git/VMware/scripts/vm_poweroff.py --debug info")
+    exec_cli_list.append('-i ' + ip)
+    exec_cli_list.append('-u ' + user)
+    exec_cli_list.append('-p ' + passwd)
+    exec_cli_list.append('-l ' + logfile)
+    exec_cli_list.append('--parameters sql.name=' + sql_name)   
+    exec_cli_list.append("1>" + stdfile + " 2>&1")
+    exec_cli = ' '.join(exec_cli_list)
+    print '''Exec CLI is: ''' + exec_cli
+    os.system(exec_cli)
+    
     result = {u"power_id":power_id, u"power_result":u"1", u"power_action":power_action}
     #print str(result)
     result_json = simplejson.dumps(result)
     # print "Json data is '%s'" % result_json
     return HttpResponse(result_json, content_type='application/javascript')
 
+def _log():
+    logdir = '/var/log/will/vm/'
+    fname = time.strftime('%Y%m%d%H%M%S', time.gmtime())
+    logfile = logdir + fname + '.log'
+    stdfile = logdir + fname + '.std'
+    return logfile, stdfile
 #def connect_config(request):
 #    t = get_template('html/Connect/config.html')
 #    html = t.render(Context({'': ''}))

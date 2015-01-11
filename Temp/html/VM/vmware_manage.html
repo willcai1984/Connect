@@ -39,6 +39,9 @@
 	  		id_list=vm_get_checked();
 	  		console.log(id_list);
 	  		//var vmid_list=new Array();
+	  		var ip 			= $("#ip").val();
+			var user		= $("#user").val();
+			var passwd		= $("#passwd").val();
 	  		for (id in id_list)
 	  		{
 	  			vmid=id_list[id].replace(/check/g,'vmid');
@@ -51,7 +54,7 @@
 				if (power_txt=='0')
 					{
 					var url			= "/vm/power/";
-					var json_data	= "vmid="+vmid_txt+";power_id="+power+";power_action=on";
+					var json_data	= "ip="+ip+";user="+user+";passwd="+passwd+";vmid="+vmid_txt+";power_id="+power+";power_action=on";
 				 	vm_power_updater.poll_post(url,json_data);
 					}
 	  		}
