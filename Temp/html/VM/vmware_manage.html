@@ -98,13 +98,13 @@
   		});
   		
   		$("#CheckAll").click(function(){
-
-			var id_list=new Array()
+			alert($("#CheckAll").attr("checked"))
+			//var id_list=new Array()
 			//add name vmlist to list part,to remove title part checkbox from the id list
-			$(":checkbox[name='vmlist']:checked").each(function() {
-				var id = $(this).attr("id");
-				id_list.push(id);
-			});
+			//$(":checkbox[name='vmlist']:checked").each(function() {
+				//var id = $(this).attr("id");
+				//id_list.push(id);
+			//});
   		});
 
 	});
