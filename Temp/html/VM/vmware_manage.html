@@ -42,6 +42,7 @@
 	  		var ip 			= $("#ip").val();
 			var user		= $("#user").val();
 			var passwd		= $("#passwd").val();
+			var len			= id_list.length;
 	  		for (id in id_list)
 	  			{
 	  			vmid=id_list[id].replace(/check/g,'vmid');
@@ -54,12 +55,20 @@
 				if (power_txt=='0')
 					{
 					var url			= "/vm/power/";
-					var json_data	= "ip="+ip+";user="+user+";passwd="+passwd+";vmid="+vmid_txt+";power_id="+power+";power_action=on";
+					if (id==len-1)
+						{
+						var json_data	= "ip="+ip+";user="+user+";passwd="+passwd+";vmid="+vmid_txt+";power_id="+power+";is_last=1;power_action=on";
+						}
+					else
+						{
+						var json_data	= "ip="+ip+";user="+user+";passwd="+passwd+";vmid="+vmid_txt+";power_id="+power+";is_last=0;power_action=on";
+						}
 				 	vm_power_updater.poll_post(url,json_data);
 					}
 	  			}
 	  		//console.log(vmid_list)
-	  		alert('Power on task done');
+	  		//vm_power_updater.poll_post's success sign is early than this alert, so move this aler to for loop
+	  		//alert('Power on task done');
 	  		
   		});
  
@@ -70,6 +79,7 @@
 	  		var ip 			= $("#ip").val();
 			var user		= $("#user").val();
 			var passwd		= $("#passwd").val();
+			var len			= id_list.length;
 	  		for (id in id_list)
 	  			{
 	  			vmid=id_list[id].replace(/check/g,'vmid');
@@ -82,11 +92,18 @@
 				if (power_txt=='1')
 					{
 					var url			= "/vm/power/";
-					var json_data	= "ip="+ip+";user="+user+";passwd="+passwd+";vmid="+vmid_txt+";power_id="+power+";power_action=off";
+					if (id==len-1)
+						{
+						var json_data	= "ip="+ip+";user="+user+";passwd="+passwd+";vmid="+vmid_txt+";power_id="+power+";is_last=1;power_action=off";
+						}
+					else
+						{
+						var json_data	= "ip="+ip+";user="+user+";passwd="+passwd+";vmid="+vmid_txt+";power_id="+power+";is_last=0;power_action=off";
+						}
 				 	vm_power_updater.poll_post(url,json_data);
 					}
 	  			}
-	  		alert('Power off task done');
+	  		//alert('Power off task done');
   		});	
 
   		$("#copy").click(function(){

@@ -125,6 +125,7 @@ def vm_power(request):
     ip = request.POST['ip']
     user = request.POST['user']
     passwd = request.POST['passwd']
+    is_last = request.POST['is_last']
     logfile, stdfile = _log()
     power_action = request.POST['power_action']
     power_id = request.POST['power_id']
@@ -144,7 +145,7 @@ def vm_power(request):
     print '''Exec CLI is: ''' + exec_cli
     os.system(exec_cli)
     
-    result = {u"power_id":power_id, u"power_result":u"1", u"power_action":power_action}
+    result = {u"power_id":power_id, u"power_result":u"1", u"power_action":power_action, u"is_last":is_last}
     #print str(result)
     result_json = simplejson.dumps(result)
     # print "Json data is '%s'" % result_json

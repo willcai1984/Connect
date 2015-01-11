@@ -20,6 +20,7 @@ var vm_power_updater = {
     	var power_result=data.power_result;
 		var power_id=data.power_id;
 		var power_action=data.power_action;
+		var is_last=data.is_last;
 		try{
 			if (power_result=='1')
 					{
@@ -35,6 +36,10 @@ var vm_power_updater = {
 						console.log("Power off "+power_id+" successfully");
 						}
 					}
+			if (is_last=='1')
+				{
+				alert("Power action done");
+				}
 		}
 		catch(e){
 			console.log(e);
