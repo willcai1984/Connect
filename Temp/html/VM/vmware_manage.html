@@ -6,9 +6,10 @@
 <script type="text/javascript" src="/js/jquery.js"></script>
 <script type="text/javascript" src="/js/vm_update.js"></script>
 <script type="text/javascript" src="/js/vm_power_update.js"></script>
+<script type="text/javascript" src="/js/vm_del_update.js"></script>
 <script type="text/javascript" src="/js/vm_get_checked.js"></script>
 <script type="text/javascript">
-	var html1='<tr><td style="width:5%;text-align:left;" border="1"><input type="checkbox" name="vmlist" id="__id__" /></td>';
+	var html1='<tr id="__id__"><td style="width:5%;text-align:left;" border="1"><input type="checkbox" name="vmlist" id="__id__" /></td>';
 	var	html2='<td id="__id__" style="width:25%;text-align:left;" border="1">__dis__</td>';
 	var	html3='<td id="__id__" style="width:10%;text-align:left;" border="1">__power__</td>';
 	var	html4='<td id="__id__" style="width:10%;text-align:left;" border="1">__vmid__</td>';
@@ -108,6 +109,10 @@
 
   		$("#copy").click(function(){
 	  		id_list=vm_get_checked();
+  		});
+
+  		$("#del").click(function(){
+	  		id_list=vm_get_checked();
 	  		console.log(id_list);
 	  		//var vmid_list=new Array();
 	  		var ip 			= $("#ip").val();
@@ -116,27 +121,23 @@
 			var len			= id_list.length;
 	  		for (id in id_list)
 	  			{
-	  			dis=id_list[id].replace(/check/g,'dis');
-	  			console.log(dis);
-	  			var dis_txt=$("#"+dis).text();
+	  			dis_id=id_list[id].replace(/check/g,'dis');
+	  			console.log(dis_id);
+	  			var dis_txt=$("#"+dis_id).text();
 	  			//console.log(vmid_txt);
 	  			//vmid_list.push(vmid_txt);
-				var url			= "/vm/power/";
+				var url			= "/vm/del/";
 				if (id==len-1)
 					{
-					var json_data	= "ip="+ip+";user="+user+";passwd="+passwd+";disname="+dis_txt+";is_last=1";
+					var json_data	= "ip="+ip+";user="+user+";passwd="+passwd+";dis_name="+dis_txt+";dis_id="+dis_id+";is_last=1";
 					}
 				else
 					{
-					var json_data	= "ip="+ip+";user="+user+";passwd="+passwd+";disname="+dis_txt+";is_last=0";
+					var json_data	= "ip="+ip+";user="+user+";passwd="+passwd+";dis_name="+dis_txt+";dis_id="+dis_id+";is_last=0";
 					}
-				vm_power_updater.poll_post(url,json_data);
+				vm_del_updater.poll_post(url,json_data);
 	  			}
 	  		//alert('Power off task done');
-  		});
-
-  		$("#del").click(function(){
-	  		id_list=vm_get_checked();
 	  		
   		});
   		

@@ -32,7 +32,10 @@ var vm_updater = {
 				var dis=dis_list[i];
 				var reg=reg_list[i];
 				var power=power_list[i];
-				var h1=html1.replace(/__id__/g,'check'+i);
+				//replace tr id firstly
+				var h1=html1.replace(/__id__/,'tr'+i);
+				//replace input id 2nd
+				var h1=h1.replace(/__id__/,'check'+i);
 				var h2=html2.replace(/__id__/g,'dis'+i);
 				var h2=h2.replace(/__dis__/g,dis);
 				var h3=html3.replace(/__id__/g,'power'+i);

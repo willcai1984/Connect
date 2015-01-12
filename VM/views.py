@@ -154,7 +154,8 @@ def vm_power(request):
 def vm_del(request):
     #json_data    = "vmid=vmid_txt;power_action=power_action"
     print "Del data is :" + str(request.POST)
-    disname = request.POST['disname']
+    dis_name = request.POST['dis_name']
+    dis_id = request.POST['dis_id']
     ip = request.POST['ip']
     user = request.POST['user']
     passwd = request.POST['passwd']
@@ -166,12 +167,12 @@ def vm_del(request):
     exec_cli_list.append('-u ' + user)
     exec_cli_list.append('-p ' + passwd)
     exec_cli_list.append('-l ' + logfile)
-    exec_cli_list.append('--parameters vm.name=' + disname)   
+    exec_cli_list.append('--parameters vm.name=' + dis_name)   
     exec_cli_list.append("1>" + stdfile + " 2>&1")
     exec_cli = ' '.join(exec_cli_list)
     print '''Exec CLI is: ''' + exec_cli
     os.system(exec_cli)
-    result = {u"del_result":u"1", u"is_last":is_last}
+    result = {u"del_result":u"1", u"is_last":is_last, u"dis_name":dis_name, u"dis_id":dis_id}
     #print str(result)
     result_json = simplejson.dumps(result)
     # print "Json data is '%s'" % result_json
