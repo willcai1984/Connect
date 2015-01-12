@@ -151,6 +151,32 @@ def vm_power(request):
     # print "Json data is '%s'" % result_json
     return HttpResponse(result_json, content_type='application/javascript')
 
+def vm_del(request):
+    #json_data    = "vmid=vmid_txt;power_action=power_action"
+    print "Del data is :" + str(request.POST)
+    disname = request.POST['disname']
+    ip = request.POST['ip']
+    user = request.POST['user']
+    passwd = request.POST['passwd']
+    is_last = request.POST['is_last']
+    logfile, stdfile = _log()
+    exec_cli_list = ['export PYTHONPATH=$PYTHONPATH:/home/will/git/;']
+    exec_cli_list.append("/usr/bin/python /home/will/git/VMware/scripts/vm_del.py --debug info")
+    exec_cli_list.append('-i ' + ip)
+    exec_cli_list.append('-u ' + user)
+    exec_cli_list.append('-p ' + passwd)
+    exec_cli_list.append('-l ' + logfile)
+    exec_cli_list.append('--parameters vm.name=' + disname)   
+    exec_cli_list.append("1>" + stdfile + " 2>&1")
+    exec_cli = ' '.join(exec_cli_list)
+    print '''Exec CLI is: ''' + exec_cli
+    os.system(exec_cli)
+    result = {u"del_result":u"1", u"is_last":is_last}
+    #print str(result)
+    result_json = simplejson.dumps(result)
+    # print "Json data is '%s'" % result_json
+    return HttpResponse(result_json, content_type='application/javascript')
+
 def _log():
     logdir = '/var/log/will/vm/'
     fname = time.strftime('%Y%m%d%H%M%S', time.gmtime())
