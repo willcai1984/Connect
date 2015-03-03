@@ -48,7 +48,7 @@ def connect_process(request):
 
 
 def connect_process_longpull(request):
-    c_re = re.compile('Connect Part Done')
+    c_re = re.compile('Connect Part Done|Login Error|Exec Error|')
     print "Connect long pull post data is '%s'" % str(request.POST)
     if request.POST.has_key('logfile'):
         logfile = request.POST['logfile']
