@@ -52,7 +52,7 @@ function long_pull(logfile,stdfile){
 		else{
 		    try{
 				$("#log").html(log);
-				slider_down("#log");
+				//slider_down("#log");
 			}
 			catch(e){
 				console.log(e);
@@ -61,7 +61,7 @@ function long_pull(logfile,stdfile){
 			}
 		    try{
 				$("#std").html(std);
-				slider_down("#std");
+				//slider_down("#std");
 			}
 			catch(e){
 				console.log(e);
